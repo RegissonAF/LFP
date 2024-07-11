@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://pr74hi816q4t"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_166gv"]
+[ext_resource type="Texture2D" uid="uid://c770wtnco655f" path="res://assets/Sprites/Main Character/LF_Sprite.png" id="2_8sjre"]
+[ext_resource type="Shape2D" uid="uid://cx8n4yvnvol1v" path="res://assets/Forms/capsule.tres" id="3_o8dtj"]
+[ext_resource type="Shape2D" uid="uid://3ta36gdpegac" path="res://assets/Forms/Rectangles.tres" id="4_ta50w"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(120, 555)
+scale = Vector2(2.68, 2.4)
+script = ExtResource("1_166gv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_8sjre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1)
+scale = Vector2(1.21361, 0.957782)
+shape = ExtResource("3_o8dtj")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(414, 614)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(39.7345, 1.91568)
+shape = ExtResource("4_ta50w")
