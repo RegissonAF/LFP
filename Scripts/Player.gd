@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var SPEED = 50.0
 
 
@@ -10,7 +12,6 @@ var screenSize = DisplayServer.screen_get_size()
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var totalTime = 0
-
 
 #running variables
 var direction : float
@@ -23,7 +24,6 @@ const MIN_JUMP_SPEED = -200.0
 
 var jumping_direction : float = 0
 var current_jump : float = MIN_JUMP_SPEED
-var where_to_jump : Vector2
 
 func _ready():
 	mutex = Mutex.new()
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		velocity.x = 0
 		jump(delta, direction)
 		
-	else:
+	elif !Input.is_action_just_released("space") and is_on_floor():
 		move(direction)
 	
 	move_and_slide()
@@ -72,6 +72,6 @@ func move(direction):
 
 func jump(delta, direction):
 	if direction > 0 or direction < 0:
-		jumping_direction = move_toward(jumping_direction, 1000*direction, delta*200)
+		jumping_direction = move_toward(jumping_direction, 150*direction, delta*200)
 	current_jump = move_toward(current_jump, MAX_JUMP_VELOCITY, delta * JUMP_FORCE_INCREMENT)
 	print(jumping_direction)

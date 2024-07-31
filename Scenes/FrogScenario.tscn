@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://pr74hi816q4t"]
+[gd_scene load_steps=14 format=3 uid="uid://pr74hi816q4t"]
 
+[ext_resource type="Script" path="res://Scripts/EnemiesSpawn.gd" id="1_hwkst"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_8lf36"]
 [ext_resource type="Texture2D" uid="uid://jyn6pmpji0op" path="res://assets/Sprites/Sprite_Sheet.png" id="2_c8sqa"]
 [ext_resource type="Shape2D" uid="uid://cx8n4yvnvol1v" path="res://assets/Forms/capsule.tres" id="3_yi3n8"]
@@ -57,7 +58,18 @@ size = Vector2(568, 164)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7j7d2"]
 
+[sub_resource type="Gradient" id="Gradient_0ph26"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.532609)
+colors = PackedColorArray(0.745209, 0.16594, 0.218585, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mssvg"]
+gradient = SubResource("Gradient_0ph26")
+width = 16
+height = 16
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_hwkst")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_s8oi6")
@@ -92,9 +104,11 @@ shape = SubResource("RectangleShape2D_g7rwi")
 metadata/_edit_group_ = true
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(90, -50)
+position = Vector2(141, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("CircleShape2D_7j7d2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(1.13852, 1.16395)
+texture = SubResource("GradientTexture2D_mssvg")
